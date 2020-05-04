@@ -12,7 +12,7 @@ class InitDB:
     db_inst = InitDB()
     db_engine = db_inst()
     """
-    supported_databases = ["redis"]  # there is could be not only redis
+    supported_databases = [REDIS_DB]  # there is could be not only redis
 
     def __init__(self):
         self.engine = os.environ.get("DATABASE_ENGINE", None)
