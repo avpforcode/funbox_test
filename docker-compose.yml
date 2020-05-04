@@ -1,0 +1,19 @@
+version: '3.6'
+services:
+  server:
+    build: server/
+    depends_on:
+      - redis
+    environment:
+      - DATABASE_HOST=redis
+      - DATABASE_ENGINE=redis
+      - DATABASE_PORT=6379
+    ports:
+      - "8080:8080"
+  redis:
+    image: redis
+    restart: always
+    volumes:
+      - redis_data:/data
+volumes:
+  redis_data:
