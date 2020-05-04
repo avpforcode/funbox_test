@@ -51,7 +51,7 @@ def visited_domains(_from: TimeSerializer()=None, to: TimeSerializer()=None) -> 
         от имени модели и настроек сервера."""
 
         db_model = get_model('domains', db_engine())
-    except ImportError as e:
+    except (ImportError, EnvironmentError) as e:
         error_log.error(e)
         return dict(status="Inner Server Error")
 
@@ -73,7 +73,7 @@ def visited_links(body: LinksSerializer()) -> dict:
     """
     try:
         db_model = get_model('domains', db_engine())
-    except ImportError as e:
+    except (ImportError, EnvironmentError) as e:
         error_log.error(e)
         return dict(status="Inner Server Error")
 
